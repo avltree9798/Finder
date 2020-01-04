@@ -8,14 +8,60 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        Text("Hello, World!")
+struct ObjectRow: View{
+    var object: Object
+    var body: some View{
+        HStack{
+            Text(object.type)
+            Text(object.name)
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+struct ContentView: View {
+    var directory:String = "/"
+    var files = ObjectController.ls(directory: "/")
+    var body: some View {
+        NavigationView{
+            List(files){ object in
+                //
+                if object.type == "dir" {
+                    NavigationLink(destination:Dest(directory: "/"+object.name+"/", files: ObjectController.ls(directory: self.directory+object.name))){
+                        ObjectRow(object:object)
+                    }
+                }else{
+                    NavigationLink(destination:FileViewer(file: "/"+object.name, content: ObjectController.cat(file: self.directory+object.name))){
+                        ObjectRow(object:object)
+                    }
+                }
+                
+            }.navigationBarTitle(Text(directory))
+        }
+    }
+}
+struct FileViewer:View{
+    var file:String
+    var content:String
+    var body: some View{
+        Text(content)
+    }
+}
+struct Dest:View{
+    var directory:String
+    var files:Array<Object>
+    var body: some View {
+        List(files){ object in
+            //
+            if object.type == "dir" {
+                NavigationLink(destination:Dest(directory: "/"+object.name+"/", files: ObjectController.ls(directory: self.directory+object.name))){
+                    ObjectRow(object:object)
+                }
+            }else{
+                NavigationLink(destination:FileViewer(file: "/"+object.name, content: ObjectController.cat(file: self.directory+object.name))){
+                    ObjectRow(object:object)
+                }
+            }
+            
+        }.navigationBarTitle(Text(directory))
     }
 }

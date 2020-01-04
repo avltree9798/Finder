@@ -13,6 +13,7 @@
 		442B8F8123C0CC430083BCF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 442B8F8023C0CC430083BCF9 /* Assets.xcassets */; };
 		442B8F8423C0CC430083BCF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 442B8F8323C0CC430083BCF9 /* Preview Assets.xcassets */; };
 		442B8F8723C0CC430083BCF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 442B8F8523C0CC430083BCF9 /* LaunchScreen.storyboard */; };
+		442B8F8F23C0CCE20083BCF9 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B8F8E23C0CCE20083BCF9 /* Object.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		442B8F8323C0CC430083BCF9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		442B8F8623C0CC430083BCF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		442B8F8823C0CC430083BCF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		442B8F8E23C0CCE20083BCF9 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		44B8B9E423C0FCE70045C787 /* Finder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Finder.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,8 @@
 		442B8F7923C0CC3E0083BCF9 /* Finder */ = {
 			isa = PBXGroup;
 			children = (
+				44B8B9E423C0FCE70045C787 /* Finder.entitlements */,
+				442B8F8E23C0CCE20083BCF9 /* Object.swift */,
 				442B8F7A23C0CC3E0083BCF9 /* AppDelegate.swift */,
 				442B8F7C23C0CC3E0083BCF9 /* SceneDelegate.swift */,
 				442B8F7E23C0CC3E0083BCF9 /* ContentView.swift */,
@@ -148,6 +153,7 @@
 			files = (
 				442B8F7B23C0CC3E0083BCF9 /* AppDelegate.swift in Sources */,
 				442B8F7D23C0CC3E0083BCF9 /* SceneDelegate.swift in Sources */,
+				442B8F8F23C0CCE20083BCF9 /* Object.swift in Sources */,
 				442B8F7F23C0CC3E0083BCF9 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +290,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Finder/Finder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Finder/Preview Content\"";
 				DEVELOPMENT_TEAM = W6RB25ZNB7;
 				ENABLE_PREVIEWS = YES;
@@ -295,6 +303,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.avltree9798.Finder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -304,7 +313,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Finder/Finder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Finder/Preview Content\"";
 				DEVELOPMENT_TEAM = W6RB25ZNB7;
 				ENABLE_PREVIEWS = YES;
@@ -315,6 +326,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.avltree9798.Finder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
