@@ -24,12 +24,16 @@ class ObjectController:NSObject{
             let files = try fm.contentsOfDirectory(atPath: directory)
             files.compactMap{$0}.forEach{(file:String) in
                 var isDir : ObjCBool = false
-                let path = directory+file
+                var dir = directory
+                if !dir.hasSuffix("/"){
+                    dir += "/"
+                }
+                let path = dir+file
                 var type : String = ""
                 if fm.fileExists(atPath: path, isDirectory:&isDir) {
                     type = isDir.boolValue ? "dir" : "file"
                 }
-                let obj = Object(name:file, type:type, parent:directory, childs:[])
+                let obj = Object(name:file, type:type, parent:dir, childs:[])
                 retval.append(obj)
             }
         }catch{

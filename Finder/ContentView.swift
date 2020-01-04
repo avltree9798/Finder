@@ -22,23 +22,56 @@ struct ContentView: View {
     var directory:String = "/"
     var files = ObjectController.ls(directory: "/")
     var body: some View {
-        NavigationView{
-            List(files){ object in
-                //
-                if object.type == "dir" {
-                    NavigationLink(destination:Dest(directory: "/"+object.name+"/", files: ObjectController.ls(directory: self.directory+object.name))){
-                        ObjectRow(object:object)
+        TabView{
+            NavigationView{
+                List(files){ object in
+                    //
+                    if object.type == "dir" {
+                        NavigationLink(destination:Dest(directory: "/"+object.name+"/", files: ObjectController.ls(directory: self.directory+object.name))){
+                            ObjectRow(object:object)
+                        }
+                    }else{
+                        NavigationLink(destination:FileViewer(file: "/"+object.name, content: ObjectController.cat(file: self.directory+object.name))){
+                            ObjectRow(object:object)
+                        }
                     }
-                }else{
-                    NavigationLink(destination:FileViewer(file: "/"+object.name, content: ObjectController.cat(file: self.directory+object.name))){
-                        ObjectRow(object:object)
-                    }
-                }
-                
-            }.navigationBarTitle(Text(directory))
+                    
+                }.navigationBarTitle(Text(directory))
+            }.tabItem{
+                Image(systemName: "folder")
+                Text("File Manager")
+            }
+            MyPhone().tabItem{
+               Image(systemName: "cloud.sleet")
+                Text("About")
+            }
         }
     }
 }
+
+struct MyPhone:View{
+    
+    var body: some View{
+        VStack{
+            Image("Logo")
+                .shadow(radius: 10)
+            VStack(alignment: .leading){
+                HStack{
+                    Text("Device Model")
+                    Text(DeviceInfo.modelName)
+                }
+                HStack{
+                    Text("OS Version")
+                    Text(UIDevice.current.systemVersion)
+                }
+                HStack{
+                    Text("Made with 💚 by avltree9798")
+                }
+            }
+        }
+    }
+}
+
 struct FileViewer:View{
     var file:String
     var content:String
